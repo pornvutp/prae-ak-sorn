@@ -1,8 +1,9 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 from infrastructure.models import ItemType
 
 # Create your models here.
+
+from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Project(models.Model):
@@ -19,8 +20,8 @@ class Project(models.Model):
 class Announcement(models.Model):
 
 	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
-	publisher = models.ForeignKey(User, on_delete=models.CASCADE)
+	modified_at = models.DateTimeField(auto_now=True)
+	publisher = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 	project = models.ForeignKey(Project, on_delete=models.CASCADE)
 	title = models.CharField(max_length=255, blank=True)
 	detail = models.CharField(max_length=255, blank=True)
@@ -28,11 +29,11 @@ class Announcement(models.Model):
 	def __str__(self):
 		return self.title
 
-class Dimension(models.Model):
+class TypeDimension(models.Model):
 
 	project = models.ForeignKey(Project, on_delete=models.CASCADE)
-	ItemType = models.ForeignKey(ItemType, on_delete=models.CASCADE)
-	default_width_x = models.PositiveSmallIntegerField()
+	item_type = models.ForeignKey(ItemType, on_delete=models.CASCADE)
+	width_x = models.PositiveSmallIntegerField()
 	width_y = models.PositiveSmallIntegerField()
 	is_openshut = models.BooleanField()
 	is_mp = models.BooleanField()
@@ -40,4 +41,23 @@ class Dimension(models.Model):
 	is_editable = models.BooleanField()
 
 	def __str__(self):
-		return self.title + '_' + self.ItemType
+		return self.title + '_' + self.item_type
+
+class ItemTag(models.Model):
+
+	project = models.ForeignKey(Project, on_delete=models.CASCADE)
+	name = models.CharField(max_length=50)
+
+	def __str__(self):
+		return self.project + '_' + self.name
+
+class RefColor(models.Model):
+
+	project = models.ForeignKey(Project, on_delete=models.CASCADE)
+	type_dimension = models.ForeignKey(TypeDimension, on_delete=models.CASCADE)
+
+	order = models.PositiveSmallIntegerField()
+	name = models.CharField(max_length=50)
+	red = models.PositiveIntegerField()
+	green = models.PositiveIntegerField()
+	blue = models.PositiveIntegerField()

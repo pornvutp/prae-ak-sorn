@@ -42,9 +42,9 @@ INSTALLED_APPS = [
 	'bootstrap4',
 	'django_forms_bootstrap',
 	'account.apps.AccountConfig',
-	'project',
-	'infrastructure',
-	'item',
+	'project.apps.ProjectConfig',
+	'infrastructure.apps.InfrastructureConfig',
+	'item.apps.ItemConfig',
 ]
 
 MIDDLEWARE = [
