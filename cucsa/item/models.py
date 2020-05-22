@@ -35,8 +35,18 @@ class ItemDraft(models.Model):
 	def __str__(self):
 		return self.project + '-' + self.name
 
+class DraftFile(models.Model):
+
+	draft = models.ForeignKey(ItemDraft, on_delete=models.CASCADE)
+	sequence = models.SmallIntegerField()
+	file_dir_draft = models.TextField()
+	file_dir_op = models.TextField()
+	mp_lyrics = models.TextField(max_length=500)
+
+
 class Review(models.Model):
 
+	reviewer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 	draft = models.ForeignKey(ItemDraft, on_delete=models.CASCADE)
 
 	created_at = models.DateTimeField(auto_now_add=True)

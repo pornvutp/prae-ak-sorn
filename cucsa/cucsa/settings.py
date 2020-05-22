@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 	'project.apps.ProjectConfig',
 	'infrastructure.apps.InfrastructureConfig',
 	'item.apps.ItemConfig',
+    'cuser',
 ]
 
 MIDDLEWARE = [
@@ -92,6 +93,13 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL = 'cuser.CUser'
+
+CUSER = {
+    'app_verbose_name': 'Authentication and Authorization',
+    'register_proxy_auth_group_model': True,
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
