@@ -1,0 +1,46 @@
+{% extends "project/project_base.html" %}
+
+
+{% block project_content %}
+
+<div class="my-3">
+
+    <div class="mb-4">
+
+        <a class="btn btn-primary btn-sm float-right" href="{% url 'project:create' %}">Create Project</a>
+        <!-- <button class="create-project btn btn-primary btn-sm float-right" type="button" name="button">Create Project</button> -->
+     
+        <h4>My Project</h4>
+    </div>
+
+    <div>
+        <table id="dt_project" class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">name</th>
+                <th scope="col">owner</th>
+                <th scope="col">num x</th>
+                <th scope="col">num y</th>
+            </tr>
+            </thead>
+            <tbody class="table-sm">
+                {% for project in project_list %}
+                    {% include "project/_project.html" %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block project_footer %}
+
+<div class="modal fade" tabindex="-1" role="dialog" id="create-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        
+      </div>
+    </div>
+  </div>
+{% endblock %}

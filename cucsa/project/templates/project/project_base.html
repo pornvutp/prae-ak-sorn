@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+    {% block project_header %}{% endblock %}
+    {% block project_content %}{% endblock %}
+    {% block project_footer %}{% endblock %}
+
+
+{% endblock %}
+
+{% block js_footer %}
+
+    <script>
+        $(document).ready(function(){
+            $("#dt_project").DataTable();
+        });
+    </script>
+
+<!-- JS for Modal -->
+<!-- 
+<script type="text/javascript">
+    $(function () {
+
+      // Create project button
+      $(".create-project").modalForm({formURL: "{% url 'project:create' %}", modalID: "#create-modal"});
+
+    });
+</script>
+ -->
+
+{% endblock %}
