@@ -1,0 +1,45 @@
+{% extends "item/item_base.html" %}
+
+{% block item_content %}
+
+
+    <div class="my-3">
+
+        <div class="mb-4">
+    
+            <a class="btn btn-primary btn-sm float-right" href="{% url 'project:create' %}">Create Item</a>
+            <!-- <button class="create-project btn btn-primary btn-sm float-right" type="button" name="button">Create Project</button> -->
+         
+            <h4>{{ item.name }}</h4>
+            
+        </div>
+
+        <div>
+            <p></p>
+            <p>{{ project.owner }}</p>
+            <p>{{ project.num_seat_x }}</p>
+            <p>{{ project.num_seat_y }}</p>
+        </div>
+    
+        <div>
+            <table id="dt_item" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">name</th>
+                    <th scope="col">owner</th>
+                    <th scope="col">project</th>
+                    <th scope="col">type_dim</th>
+                    <th scope="col">status</th>
+                    <th scope="col">tag</th>
+                </tr>
+                </thead>
+                <tbody class="table-sm">
+                    {% for item in project.items.all %}
+                        {% include "project/_item_row.html" %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+    {% block item_header %}{% endblock %}
+    {% block item_content %}{% endblock %}
+    {% block item_footer %}{% endblock %}
+
+
+{% endblock %}
+
+{% block js_footer %}
+
+
+<!-- JS for Modal -->
+<!-- 
+<script type="text/javascript">
+    $(function () {
+
+      // Create project button
+      $(".create-project").modalForm({formURL: "{% url 'project:create' %}", modalID: "#create-modal"});
+
+    });
+</script>
+ -->
+
+{% endblock %}

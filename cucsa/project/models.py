@@ -17,6 +17,14 @@ class Project(models.Model):
 	def __str__(self):
 		return self.name
 
+	def get_absolute_url(self):
+		return reverse(
+			"project:detail",
+			kwargs={
+				"pk": self.pk
+			}
+		)
+
 class Announcement(models.Model):
 
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -41,7 +49,7 @@ class TypeDimension(models.Model):
 	is_editable = models.BooleanField()
 
 	def __str__(self):
-		return self.title + '_' + self.item_type
+		return self.project.name + '_' + self.item_type.name
 
 class ItemTag(models.Model):
 
@@ -49,7 +57,7 @@ class ItemTag(models.Model):
 	name = models.CharField(max_length=50)
 
 	def __str__(self):
-		return self.project + '_' + self.name
+		return self.project.name + '_' + self.name
 
 class RefColor(models.Model):
 

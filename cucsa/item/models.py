@@ -10,7 +10,8 @@ class Item(models.Model):
 	name = models.CharField(max_length=50)
 	detail = models.TextField(max_length=500)
 	owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-	project = models.ForeignKey(Project, on_delete=models.CASCADE)
+	project = models.ForeignKey(Project,related_name="items", on_delete=models.CASCADE)
+	
 	type_dimension = models.ForeignKey(TypeDimension, on_delete=models.CASCADE)
 
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -20,7 +21,15 @@ class Item(models.Model):
 	tag = models.ForeignKey(ItemTag, on_delete=models.SET_DEFAULT, default='')
 
 	def __str__(self):
-		return self.project + '-' + self.name
+		return self.project.name + '-' + self.name
+
+	def get_absolute_url(self):
+		return reverse(
+			"item:detail",
+			kwargs={
+				"pk": self.pk
+			}
+		)
 
 class ItemDraft(models.Model):
 

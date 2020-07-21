@@ -1,0 +1,9 @@
+<tr>
+    <td><a href="{% url 'item:detail' pk=item.pk %}">{{ item.name }}</a></td>
+    <td>{{ item.owner.email }}</td>
+    <td>{{ item.project.name }}</td>
+    <td>{{ item.type_dimension }}</td>
+    <td>{{ item.status }}</td>
+    <td>{{ item.tag.name }}</td>
+
+</tr>
