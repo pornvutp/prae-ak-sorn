@@ -17,13 +17,13 @@ class Project(models.Model):
 	def __str__(self):
 		return self.name
 
-	def get_absolute_url(self):
-		return reverse(
-			"project:detail",
-			kwargs={
-				"pk": self.pk
-			}
-		)
+	# def get_absolute_url(self):
+	# 	return reverse(
+	# 		"project:detail",
+	# 		kwargs={
+	# 			"pk": self.pk
+	# 		}
+	# 	)
 
 class Announcement(models.Model):
 

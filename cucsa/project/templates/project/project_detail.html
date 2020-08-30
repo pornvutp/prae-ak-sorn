@@ -7,7 +7,7 @@
 
         <div class="mb-4">
     
-            <a class="btn btn-primary btn-sm float-right" href="{% url 'project:create' %}">Create Project</a>
+            <a class="btn btn-primary btn-sm float-right" href="{% url 'item:create' %}?project_id={{project.pk}}">New Item</a>
             <!-- <button class="create-project btn btn-primary btn-sm float-right" type="button" name="button">Create Project</button> -->
          
             <h4>{{ project.name }}</h4>

@@ -1,10 +1,10 @@
-{% extends "project/project_base.html" %}
+{% extends "item/item_base.html" %}
 {% load bootstrap4 %}
 
-{% block project_content %}
+{% block item_content %}
 
-<h4>Create New Project</h4>
-<form method="POST" id="projectForm">
+<h4>Create New Item</h4>
+<form method="POST" id="itemForm">
   {% csrf_token %}
   {% bootstrap_form form %}
   {% buttons %}

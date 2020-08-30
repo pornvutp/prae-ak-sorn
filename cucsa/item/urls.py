@@ -5,7 +5,9 @@ from . import views
 app_name = 'item'
 
 urlpatterns = [
-    # path('', views.ProjectPage.as_view(), name="home"),
+
+    path("create/", views.ItemCreate.as_view(), name="create"),
+    path("<int:pk>/create-draft/", views.DraftCreate.as_view(), name="create-draft"),
     path("detail/<int:pk>/",views.ItemDetail.as_view(),name="detail"),
 
 ]
